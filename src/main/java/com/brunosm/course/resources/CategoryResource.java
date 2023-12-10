@@ -14,7 +14,7 @@ import com.brunosm.course.services.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categories")
-public class CategoryResources {
+public class CategoryResource {
 	@Autowired
 	private CategoryService categoryService;
 	
