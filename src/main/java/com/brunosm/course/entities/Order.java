@@ -98,7 +98,7 @@ public class Order implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		return Objects.equals(id, other.id) && Objects.equals(moment, other.moment) && Objects.equals(client, other.client);
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
