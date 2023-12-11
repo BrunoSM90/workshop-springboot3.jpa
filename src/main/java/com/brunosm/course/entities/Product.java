@@ -99,7 +99,7 @@ public class Product implements Serializable {
 	public Set<Order> getOrders() {
 		Set<Order> orders = new HashSet<>();
 		for (OrderItem item : items) {
-			orders.add(item.GetOrder());
+			orders.add(item.getOrder());
 		}
 		
 		return orders;
