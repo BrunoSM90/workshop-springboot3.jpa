@@ -11,12 +11,14 @@ import org.springframework.context.annotation.Profile;
 import com.brunosm.course.entities.Category;
 import com.brunosm.course.entities.Order;
 import com.brunosm.course.entities.OrderItem;
+import com.brunosm.course.entities.Payment;
 import com.brunosm.course.entities.Product;
 import com.brunosm.course.entities.User;
 import com.brunosm.course.entities.enums.OrderStatus;
 import com.brunosm.course.repositories.CategoryRepository;
 import com.brunosm.course.repositories.OrderItemRepository;
 import com.brunosm.course.repositories.OrderRepository;
+import com.brunosm.course.repositories.PaymentRepository;
 import com.brunosm.course.repositories.ProductRepository;
 import com.brunosm.course.repositories.UserRepository;
 
@@ -33,6 +35,8 @@ public class TestConfig implements CommandLineRunner {
 	private ProductRepository productRepository;
 	@Autowired 
 	private OrderItemRepository orderItemRepository;
+	@Autowired
+	private PaymentRepository paymentRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -68,5 +72,9 @@ public class TestConfig implements CommandLineRunner {
 		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+		
+		Payment pa1 = new Payment(null, Instant.parse("2019-06-20T19:53:07Z"), o3);
+		o3.setPayment(pa1);
+		orderRepository.save(o3);
 	}
 }
